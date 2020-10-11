@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}HEEYONGSHOP
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-2">
+        <div class="list-group">
+            <a href="/" class="list-group-item {% if not current_category %}active{% endif %}">신상품</a>
+            {% for c in categories %}
+             <a href="{{c.get_absolute_url}}" class="list-group-item {% if current_category.slug == c.slug %}active{% endif %}">{{c.name}}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col">
+        <div class="p-3 mb-2 bg-white text-dark">
+            <p class="text-left"><b><h3>
+                {% if current_category %}{{current_category.name}}
+                {% else %}신상품{% endif %}
+                </h3>
+                </b>
+            </p>
+            <form class="form-inline justify-content-end">
+                <input class="form-control" type="search" placeholder="내용을 입력하세요." aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0 bg-white" type="submit">검색</button>
+            </form>
+        </div>
+
+
+        <div class="row">
+            {% for product in products %}
+            <div class="col-4">
+                <div class="card">
+                    {%if product.image%}<img class="cart-img-top" src="{{product.image.url}}" alt="Product Image">{%endif%}
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.name}}</h5>
+                        <p class="card-text">
+                            {% if product.is_sale == True %}
+                            <span class="text-secondary"><del>{{product.price}}원</del></span><span class="text-danger"><b>{{product.sale_price}}원</b></span>
+                            {% if product.stock < 10 %}<span class="alert alert-danger" >마감임박</span>
+                            <span class="text-dark">{{product.stock}}개 남음!!</span>
+                            {% endif %}
+                            {% else %}<span class="text-secondary"><b>{{product.price}}원</b></span>
+                            {% if product.stock < 10 %}<span class="alert alert-danger" >마감임박</span>
+                            <span class="text-warning">{{product.stock}}개 남음!!</span>
+                            {% endif %}
+                            {% endif %}
+
+                        </p>
+
+                        <a href="{{product.get_absolute_url}}" class="text-primary">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
