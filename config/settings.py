@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import pymysql
-
+from .secret import *
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -159,8 +159,8 @@ LOGIN_REDIRECT_URL = '/'
 
 
 
-AWS_ACCESS_KEY_ID = 'AKIAVFQ2X77E3LU6Y5HM'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = S1
+AWS_SECRET_ACCESS_KEY = S2
 
 AWS_REGION = 'ap-northeast-2'
 AWS_STORAGE_BUCKET_NAME = 'heeyongshop-static'
@@ -181,8 +181,8 @@ DEFAULT_FILE_STORAGE = 'config.s3media.MediaStorage'
 CART_ID = 'cart_item'
 
 
-IAMPORT_KEY = '7665638603259492'
-IAMPORT_SECRET = 'WUnld6UWJBvlYmY0IgvIJpYI3RbrkSuhNSC1YxXH8s37O27xiCf22eL65WxqP2HCVkDTRBB04E8SHfqZ'
+IAMPORT_KEY = MYIAMPORT
+IAMPORT_SECRET = MYIAMPORT2
 
 
 

@@ -10,12 +10,16 @@
         </div>
         <div class="col">
             <h1 class="display-6">{{product.name}}</h1>
+            {% if product.is_sale == True %}
+            <p><span class="badge badge-secondary">가격 : </span><del>{{product.price}}</del>{{product.sale_price}}</p>
+            {% else %}
             <p><span class="badge badge-secondary">가격 : </span>{{product.price}}</p>
+            {% endif %}
 
             <form action="{% url 'cart:product_add' product.id %}" method="post">
                 {{add_to_cart}}
                 {% csrf_token %}
-                <input type="submit" class="btn btn-primary btn-sm" value="Add to Cart">
+                <input type="submit" class="btn btn-primary btn-sm" value="찜하기">
             </form>
 
             <h5><span class="badge badge-secondary">제품 상세 설명</span>{{product.description|linebreaks}}</h5>

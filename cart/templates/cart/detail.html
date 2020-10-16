@@ -61,8 +61,8 @@
         </tbody>
 
     </table>
-    <!-- 2번째 질문:화면 크기에따라 위치가 바뀝니다 작은화면일때는 정상인데 화면이 크면 테이블안으로들어가버립니다.-->
-    <div class="font-weight-bold align-buttom">
+    <!-- 화면 크기에따라 위치가 바뀝니다 -->
+    <div class="font-weight-bold align-buttom" width:10%>
             <form action="{% url 'coupon:add' %}" method="post">
                 {% csrf_token %}
                 {{add_coupon}}

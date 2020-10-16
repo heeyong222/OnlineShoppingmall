@@ -8,9 +8,13 @@
     <div class="col-md-2">
         <div class="list-group">
             <a href="/" class="list-group-item {% if not current_category %}active{% endif %}">신상품</a>
-            {% for c in categories %}
-             <a href="{{c.get_absolute_url}}" class="list-group-item {% if current_category.slug == c.slug %}active{% endif %}">{{c.name}}</a>
-            {% endfor %}
+            <a href="/sale" class="list-group-item {% if current_category.slug == 'sale' %}active{% endif %}">세일 중</a>
+            <a href="/outer" class="list-group-item {% if current_category.slug == 'outer' %}active{% endif %}">OUTER</a>
+            <a href="/top" class="list-group-item {% if current_category.slug == 'top' %}active{% endif %}">TOP</a>
+            <a href="/pants" class="list-group-item {% if current_category.slug == 'pants' %}active{% endif %}">PANTS</a>
+            <a href="/shoes" class="list-group-item {% if current_category.slug == 'shoes' %}active{% endif %}">SHOESE</a>
+            <a href="/acc" class="list-group-item {% if current_category.slug == 'acc' %}active{% endif %}">ACC</a>
+
         </div>
     </div>
     <div class="col">
